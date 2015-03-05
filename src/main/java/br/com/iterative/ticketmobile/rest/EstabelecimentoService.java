@@ -14,7 +14,7 @@ public class EstabelecimentoService {
 	@Path("/detalhar")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String detalharEstabelecimento(String content) {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@POST
@@ -32,12 +32,12 @@ public class EstabelecimentoService {
 	public String avaliarEstabelecimento(String content) {
 		throw new UnsupportedOperationException();
 	}
-	
+
 	@GET
 	@Path("/listarTipos")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String listarTiposEstabelecimento(String content) {
-		throw new UnsupportedOperationException();	
+		throw new UnsupportedOperationException();
 	}
 
 }
