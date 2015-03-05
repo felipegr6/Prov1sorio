@@ -62,6 +62,9 @@ public class LoginService {
 	}
 	
 	@POST
+	@Path("/recuperarSenha")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String recuperarSenha(String content) {
 		throw new UnsupportedOperationException();
 	}

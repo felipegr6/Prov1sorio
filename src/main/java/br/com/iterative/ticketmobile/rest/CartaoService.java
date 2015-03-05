@@ -3,6 +3,7 @@ package br.com.iterative.ticketmobile.rest;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -19,20 +20,31 @@ import com.google.gson.Gson;
 public class CartaoService {
 
 	@GET
+	@Path("/consultarSaldo")
+	@Produces(MediaType.APPLICATION_JSON)
 	public String consultarSaldo(String content) {
 		throw new UnsupportedOperationException();
 	}
 
 	@GET
+	@Path("/consultarExtrato")
+	@Produces(MediaType.APPLICATION_JSON)
 	public String consultarExtrato(String content) {
 		throw new UnsupportedOperationException();
 	}
 
 	@POST
+	@Path("/alterarApelido")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String alterarApelido(String content) {
 		throw new UnsupportedOperationException();
 	}
 
+	@POST
+	@Path("/removerCartao")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String removerCartao(String content) {
 		throw new UnsupportedOperationException();
 	}
@@ -56,11 +68,17 @@ public class CartaoService {
 	}
 
 	@POST
+	@Path("/existeCartao")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String existeCartao(String content) {
 		throw new UnsupportedOperationException();
 	}
 
 	@POST
+	@Path("/cadastrarCartao")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String cadastrarCartao(String content) {
 
 		throw new UnsupportedOperationException();
