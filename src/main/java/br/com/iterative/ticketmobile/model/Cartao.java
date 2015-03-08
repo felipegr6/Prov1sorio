@@ -10,6 +10,10 @@ public class Cartao {
 	private double saldo;
 	private Date proximoDeposito;
 
+	public Cartao() {
+
+	}
+
 	public String getBin() {
 		return bin;
 	}

@@ -11,16 +11,18 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import br.com.iterative.ticketmobile.model.Cartao;
-import br.com.iterative.ticketmobile.model.repositories.request.ListarCartoesRequest;
 import br.com.iterative.ticketmobile.model.repositories.response.ListarCartoesResponse;
 
-import com.google.gson.Gson;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
 @Path("/cartao")
+@Api(value = "/cartao", description = "Serviços de Cartão", produces = "JSON", consumes = "JSON")
 public class CartaoService {
 
 	@GET
 	@Path("/consultarSaldo")
+	@ApiOperation(value = "ConsultarSaldo")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String consultarSaldo(String content) {
 		throw new UnsupportedOperationException();
@@ -28,6 +30,7 @@ public class CartaoService {
 
 	@GET
 	@Path("/consultarExtrato")
+	@ApiOperation(value = "ConsultarExtrato")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String consultarExtrato(String content) {
 		throw new UnsupportedOperationException();
@@ -35,6 +38,7 @@ public class CartaoService {
 
 	@POST
 	@Path("/alterarApelido")
+	@ApiOperation(value = "AlterarApelido")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String alterarApelido(String content) {
@@ -43,6 +47,7 @@ public class CartaoService {
 
 	@POST
 	@Path("/removerCartao")
+	@ApiOperation(value = "RemoverCartao")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String removerCartao(String content) {
@@ -52,23 +57,22 @@ public class CartaoService {
 	@GET
 	@Path("/listarCartao")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String listarCartao(String content) {
+	@ApiOperation(value = "ListarCartao")
+	public String listarCartao(String cartoesRequest) {
 
-		ListarCartoesRequest cartoesRequest;
 		ListarCartoesResponse cartoesResponse;
-		Gson gson = new Gson();
 
 		List<Cartao> cartoes = new ArrayList<>();
 
-		cartoesRequest = gson.fromJson(content, ListarCartoesRequest.class);
 		cartoesResponse = new ListarCartoesResponse(0, "", cartoes);
 
-		return gson.toJson(cartoesResponse);
+		return cartoesResponse.toString();
 
 	}
 
 	@POST
 	@Path("/existeCartao")
+	@ApiOperation(value = "ExisteCartao")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String existeCartao(String content) {
@@ -77,6 +81,7 @@ public class CartaoService {
 
 	@POST
 	@Path("/cadastrarCartao")
+	@ApiOperation(value = "CadastrarCartao")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String cadastrarCartao(String content) {

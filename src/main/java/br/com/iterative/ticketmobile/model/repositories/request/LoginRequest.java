@@ -1,10 +1,22 @@
 package br.com.iterative.ticketmobile.model.repositories.request;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.wordnik.swagger.annotations.ApiModelProperty;
+
+@XmlRootElement
 public class LoginRequest {
 
+	@ApiModelProperty(value = "E-mail", required = true, allowableValues = "name@at.com")
 	private String email;
+	@ApiModelProperty(value = "Senha", required = true, allowableValues = "Xyz123*")
 	private String senha;
+	@ApiModelProperty(value = "Token Facebook", required = false, allowableValues = "anflheafga")
 	private String tokenFB;
+
+	public LoginRequest() {
+
+	}
 
 	public String getEmail() {
 		return email;

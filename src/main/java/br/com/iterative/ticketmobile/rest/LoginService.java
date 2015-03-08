@@ -9,25 +9,26 @@ import javax.ws.rs.core.MediaType;
 import br.com.iterative.ticketmobile.model.Helper;
 import br.com.iterative.ticketmobile.model.repositories.request.EnviarTokenRequest;
 import br.com.iterative.ticketmobile.model.repositories.request.LoginRequest;
+import br.com.iterative.ticketmobile.model.repositories.request.RecuperarSenhaRequest;
 import br.com.iterative.ticketmobile.model.repositories.response.EnviarTokenResponse;
 import br.com.iterative.ticketmobile.model.repositories.response.LoginResponse;
+import br.com.iterative.ticketmobile.model.repositories.response.RecuperarSenhaResponse;
 
-import com.google.gson.Gson;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
 @Path("/login")
+@Api(value = "/login", description = "Operações de Login")
 public class LoginService {
 
 	@POST
-	@Path("/autenticar")
+	@Path("/Autenticar")
+	@ApiOperation(value = "Autenticar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String login(String content) {
+	public LoginResponse login(LoginRequest loginRequest) {
 
 		LoginResponse loginResponse;
-		LoginRequest loginRequest;
-		Gson gson = new Gson();
-
-		loginRequest = gson.fromJson(content, LoginRequest.class);
 
 		if (Helper.verificarCampos(loginRequest.getEmail(),
 				loginRequest.getSenha()))
@@ -35,21 +36,18 @@ public class LoginService {
 		else
 			loginResponse = new LoginResponse(500, "NOK", 0L);
 
-		return gson.toJson(loginResponse);
+		return loginResponse;
 
 	}
 
 	@POST
-	@Path("/enviarToken")
+	@Path("/EnviarToken")
+	@ApiOperation(value = "EnviarToken")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String enviarToken(String content) {
+	public EnviarTokenResponse enviarToken(EnviarTokenRequest tokenRequest) {
 
-		Gson gson = new Gson();
-		EnviarTokenRequest tokenRequest;
 		EnviarTokenResponse tokenResponse;
-
-		tokenRequest = gson.fromJson(content, EnviarTokenRequest.class);
 
 		if (Helper.verificarCampos(tokenRequest.getIdUsuario(),
 				tokenRequest.getDeviceToken(), tokenRequest.getPlataforma()))
@@ -57,15 +55,16 @@ public class LoginService {
 		else
 			tokenResponse = new EnviarTokenResponse(500, "NOK");
 
-		return gson.toJson(tokenResponse);
+		return tokenResponse;
 
 	}
-	
+
 	@POST
-	@Path("/recuperarSenha")
+	@Path("/RecuperarSenha")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String recuperarSenha(String content) {
+	@ApiOperation(value = "RecuperarSenha")
+	public RecuperarSenhaResponse recuperarSenha(RecuperarSenhaRequest request) {
 		throw new UnsupportedOperationException();
 	}
 
